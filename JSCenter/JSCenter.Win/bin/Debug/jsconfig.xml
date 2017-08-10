@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-16"?>
+<SysConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <HanLiang>平均供试峰面积*稀释倍数*对照浓度/供试称样量/对照峰面积/10</HanLiang>
+  <HanLiangPoint>4</HanLiangPoint>
+  <PingJunHLPoint>4</PingJunHLPoint>
+  <FangChaPoint>4</FangChaPoint>
+</SysConfig>
