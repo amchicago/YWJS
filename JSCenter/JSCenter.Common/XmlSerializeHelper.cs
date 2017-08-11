@@ -32,7 +32,7 @@ namespace JSCenter.Common
                     return serializer.Deserialize(sr) as T;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
