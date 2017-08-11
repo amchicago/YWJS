@@ -23,6 +23,8 @@ namespace JSCenter.Win
         private void ProjectList_Load(object sender, EventArgs e)
         {
             this.dataGridView1.AutoGenerateColumns = false;
+
+            SysManager.ReCalculation(_ProjectID);
             LoadData();
         }
         private void 添加数据ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,7 +52,9 @@ namespace JSCenter.Win
 
         void LoadData()
         {
+             
             var list= DAL.CommonDAL.GetProjectItemList(_ProjectID).OrderBy(s => s.IsFuCe).ToList();
+            
             this.dataGridView1.DataSource = list;
         }
        

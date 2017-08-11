@@ -1,10 +1,10 @@
 ﻿using System;
-
+using System.Linq;
 namespace JSCenter.Win
 {
     public class SysManager
     {
-
+        #region 读写配置
         private const string sysFile = "jsconfig.xml";
 
         private  static string _GetPath()
@@ -40,6 +40,41 @@ namespace JSCenter.Win
             string _path = _GetPath();
             System.IO.File.WriteAllText(_path, xml);
         }
+        #endregion
 
+        #region 计算结果
+
+        /// <summary>
+        /// 去读配置项重新计算结果,更新数据
+        /// </summary>
+        public static  void ReCalculation(string projectId)
+        {
+            var list = DAL.CommonDAL.GetProjectItemList(projectId);
+            Model.SysConfig config = ReadConfig();
+            if (config == null || string.IsNullOrEmpty(config.HanLiang))
+            {
+                return;
+            }
+            //计算含量
+            Action<Model.DrugProjectItem> countHL=(Model.DrugProjectItem s) => 
+            {
+                s.HL = "123456";
+            };
+         
+            list.ForEach(s => countHL(s));
+            //计算平均含量和方差
+            foreach( var item in list.GroupBy(s=>s.CodeNum1))
+            {
+                double PJHL = 0;
+                foreach(var sitem in item)
+                {
+                    PJHL += Convert.ToInt32(sitem.HL);
+                }
+            }
+            //计算完毕写入数据库
+
+        }
+        
+        #endregion
     }
 }
