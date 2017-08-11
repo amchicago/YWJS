@@ -13,3 +13,5 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+exe
+txt
