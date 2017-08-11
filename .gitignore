@@ -15,3 +15,5 @@ bld/
 [Oo]bj/
 *.exe
 *.txt
+bin/
+obj/
