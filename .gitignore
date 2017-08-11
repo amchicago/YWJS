@@ -17,4 +17,4 @@ bld/
 *.txt
 bin/
 obj/
-/.vs
+.vs/
