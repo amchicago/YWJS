@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MathNet.Symbolics;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 namespace JSCenter.Win
 {
@@ -50,20 +52,40 @@ namespace JSCenter.Win
         public static  void ReCalculation(string projectId)
         {
             var list = DAL.CommonDAL.GetProjectItemList(projectId);
+            #region 加载配置
             Model.SysConfig config = ReadConfig();
             if (config == null || string.IsNullOrEmpty(config.HanLiang))
             {
                 return;
             }
-            //计算含量
+            #endregion
+            
+            # region 计算含量
             Action<Model.DrugProjectItem> countHL=(Model.DrugProjectItem s) => 
             {
-                s.HL = "123456";
+                try
+                {
+                    var dic = new Dictionary<string, FloatingPoint>()
+                    {
+                         {"平均供试峰面积",float.Parse(s.PJSFMJ)},
+                         {"供试称样量",float.Parse(s.GSCYL)},
+                         {"稀释倍数",float.Parse(s.XSBS)},
+                         {"对照浓度",float.Parse(s.DZLD)},
+                         {"对照峰面积",float.Parse(s.DZFMJ)}
+                    };
+                    FloatingPoint value = Evaluate.Evaluate(dic, Infix.ParseOrUndefined(config.HanLiang));
+                    s.HL = Math.Round(value.RealValue, config.HanLiangPoint, MidpointRounding.AwayFromZero).ToString();
+                }
+                catch (Exception)
+                {
+
+                }
             };
-         
             list.ForEach(s => countHL(s));
-            //计算平均含量和方差
-            foreach( var item in list.GroupBy(s=>s.CodeNum1))
+            #endregion
+           
+            #region 计算平均含量和方差
+            foreach ( var item in list.GroupBy(s=>s.CodeNum1))
             {
                 double PJHL = 0;
                 foreach(var sitem in item)
@@ -71,10 +93,14 @@ namespace JSCenter.Win
                     PJHL += Convert.ToInt32(sitem.HL);
                 }
             }
-            //计算完毕写入数据库
+            #endregion
+            
+            #region  计算完毕更新数据库
+
+            #endregion
 
         }
-        
+
         #endregion
     }
 }
