@@ -50,7 +50,8 @@ namespace JSCenter.Win
 
         void LoadData()
         {
-            this.dataGridView1.DataSource = DAL.CommonDAL.GetProjectItemList(_ProjectID).OrderBy(s=>s.IsFuCe).ToList();
+            var list= DAL.CommonDAL.GetProjectItemList(_ProjectID).OrderBy(s => s.IsFuCe).ToList();
+            this.dataGridView1.DataSource = list;
         }
        
     }
