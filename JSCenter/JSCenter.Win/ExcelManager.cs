@@ -11,6 +11,9 @@ namespace JSCenter.Win
     public  class ExcelManager
     {
 
+        /// <summary>
+        /// 测试git提交
+        /// </summary>
         public static void WriteExcel()
         {
             //TODO：计算
