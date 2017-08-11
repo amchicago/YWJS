@@ -36,6 +36,24 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
+    <Reference Include="FParsec">
+      <HintPath>..\Lib\MathNet\FParsec.dll</HintPath>
+    </Reference>
+    <Reference Include="FParsecCS">
+      <HintPath>..\Lib\MathNet\FParsecCS.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core">
+      <HintPath>..\Lib\MathNet\FSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics">
+      <HintPath>..\Lib\MathNet\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics.FSharp">
+      <HintPath>..\Lib\MathNet\MathNet.Numerics.FSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Symbolics">
+      <HintPath>..\Lib\MathNet\MathNet.Symbolics.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
