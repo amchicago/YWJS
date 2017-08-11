@@ -88,9 +88,10 @@ namespace JSCenter.Win
             foreach ( var item in list.GroupBy(s=>s.CodeNum1))
             {
                 double PJHL = 0;
+              
                 foreach(var sitem in item)
                 {
-                    PJHL += Convert.ToInt32(sitem.HL);
+                    PJHL += Convert.ToDouble(sitem.HL);
                 }
             }
             #endregion
