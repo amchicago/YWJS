@@ -95,9 +95,9 @@ namespace JSCenter.DAL
             DrugProjectItem product = Db.Sql(@"select * from DrugProjectItem where ID = @0").Parameters(model.ID)
             .QuerySingle<DrugProjectItem>();
             
-            product.CodeNum1 = model.CodeNum1;
-            product.CodeNum2 = model.CodeNum2;
-            product.DrugProjectID = model.DrugProjectID;
+           // product.CodeNum1 = model.CodeNum1;
+          //  product.CodeNum2 = model.CodeNum2;
+           // product.DrugProjectID = model.DrugProjectID;
             product.DZFMJ = model.DZFMJ;
             product.DZLD = model.DZLD;
             product.FC = model.FC;
@@ -107,22 +107,59 @@ namespace JSCenter.DAL
             product.PJHL = model.PJHL;
             product.PJSFMJ = model.PJSFMJ;
             product.XSBS = model.XSBS;
-            product.type = model.type;
+            //product.type = model.type;
 
             //记录日志
             LogProjectItem(product, model);
+            try
+            {
+                int rowsAffected = Db.Update("DrugProjectItem")
+               .Column("DZFMJ", product.DZFMJ)
+               .Column("DZLD", product.DZLD)
+               .Column("FC", product.FC)
+               .Column("GSCYL", product.GSCYL)
+               .Column("HL", product.HL)
+               .Column("IsFuCe", product.IsFuCe)
+               .Column("PJHL", product.PJHL)
+               .Column("PJSFMJ", product.PJSFMJ)
+               .Column("XSBS", product.XSBS)
+               .Where("ID", product.ID)
+               .Execute();
+            }
+            catch (Exception ex)
+            {
 
-            int rowsAffected = Db.Update("DrugProjectItem", product)
-                        .AutoMap(x => x.ID)
-                        .Where(x => x.ID)
-                        .Execute();
+            }
+            
         }
 
         public static void LogProjectItem(Model.DrugProjectItem before, Model.DrugProjectItem after)
         {
             //log
         }
+        /// <summary>
+        /// 添加统计数据，每次先删除在插入
+        /// </summary>
+        /// <param name="list"></param>
+        public static void AddProjectTongji(List<Tongji> list,string projectID)
+        {
+            //delete
+            Db.Sql(@"delete from Tongji where ProjectID = @0").Parameters(projectID).Execute();
 
+            foreach( var item in list)
+            {
+                item.ID = CurrentID("Tongji");
+                int row = Db.Sql(@"insert into Tongji values(@0,@1,@2,@3,@4,@5);")
+                     .Parameters(
+                    item.ID,
+                    projectID,
+                    item.GroupName,
+                    item.TJHL,
+                    item.YPHL,
+                    item.ZYLv
+                     ).Execute();
+            }
+        }
 
     }
 }

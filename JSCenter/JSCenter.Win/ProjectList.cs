@@ -23,7 +23,6 @@ namespace JSCenter.Win
         private void ProjectList_Load(object sender, EventArgs e)
         {
             this.dataGridView1.AutoGenerateColumns = false;
-
             SysManager.ReCalculation(_ProjectID);
             LoadData();
         }

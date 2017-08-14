@@ -172,13 +172,14 @@ namespace JSCenter.Win
             {
                 item.ZYLv = Math.Round((item.TJHL / item.YPHL) * 100, 2, MidpointRounding.AwayFromZero); 
             }
+            DAL.CommonDAL.AddProjectTongji(tongjiList, projectId);
             #endregion
 
             #region  计算完毕更新数据库
-           
-            foreach( var item in list)
+
+            foreach ( var item in list)
             {
-                Console.WriteLine(item.FC);
+                DAL.CommonDAL.UpdateProjectItem(item);
             }
             #endregion
 

@@ -36,8 +36,15 @@ namespace JSCenter.Win
             comboBox1.DataSource = System.Enum.GetNames(typeof(Model.DrugType));
             Model.DrugType yp = Model.DrugType.饮片;
             comboBox1.SelectedIndex = this.comboBox1.FindString(yp.ToString());
+            SetTxtBox();
+         
             // 取值
             //Model.DrugType testenum = (Model.DrugType)Enum.Parse(typeof(Model.DrugType), comboBox1.SelectedItem.ToString(), false);
+        }
+
+        private void SetTxtBox()
+        {
+            txtCode1.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
