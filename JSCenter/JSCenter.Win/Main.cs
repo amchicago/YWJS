@@ -62,7 +62,15 @@ namespace JSCenter.Win
         private void 导出ExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            ExcelManager.WriteExcel();
+            DataGridViewRow row = dataGridView1.CurrentRow;
+            if (row == null)
+            {
+                return;
+            }
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ExcelManager.WriteExcel(row.Cells[0].Value.ToString(), saveFileDialog1.SelectedPath);
+            }
         }
 
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)

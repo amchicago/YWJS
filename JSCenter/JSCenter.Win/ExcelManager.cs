@@ -12,33 +12,13 @@ namespace JSCenter.Win
     {
 
         /// <summary>
-        /// 测试git提交
+        /// 导出excle
         /// </summary>
-        public static void WriteExcel()
+        /// <param name="projectID"></param>
+        /// <param name="exclePath">eg.C:\\form</param>
+        public static void WriteExcel(string projectID,string exclePath)
         {
-            //TODO：计算
-            List<Model.DrugProjectItem> list = new List<Model.DrugProjectItem>();
-
-            for (int i = 0; i < 50; i++)
-            {
-                list.Add(new Model.DrugProjectItem()
-                {
-                    CodeNum1=DateTime.Now.ToString("yyyy-MM-dd"),
-                    CodeNum2=i.ToString(),
-                    DrugProjectID=1,
-                    DZFMJ=i.ToString(),
-                    DZLD=i.ToString(),
-                    FC=i.ToString(),
-                    GSCYL=i.ToString(),
-                    HL=i.ToString(),
-                    IsFuCe="false",
-                    PJHL=i.ToString(),
-                    PJSFMJ=i.ToString(),
-                    XSBS=i.ToString()
-                });
-            }
-            //TODO:模板
-
+            var datalist = DAL.CommonDAL.GetProjectItemList(projectID);
             string path = AppDomain.CurrentDomain.BaseDirectory + "center.xlsx";
 
             OXExcel doce = new OXExcel(path);
@@ -114,6 +94,7 @@ namespace JSCenter.Win
             {
                 sheet.Write(rowIndex, item.Key+1, item.Value, rowcl, 14);
             }
+           
 
             foreach ( var item in list)
             {

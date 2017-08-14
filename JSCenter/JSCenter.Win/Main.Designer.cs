@@ -34,15 +34,16 @@
             this.药材检测ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.详细数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.日志ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.导出ExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colsAddDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colsLastDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.详细数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.日志ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.导出ExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -98,37 +99,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(607, 326);
             this.dataGridView1.TabIndex = 1;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.详细数据ToolStripMenuItem,
-            this.日志ToolStripMenuItem,
-            this.导出ExcelToolStripMenuItem,
-            this.删除ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
-            // 
-            // 详细数据ToolStripMenuItem
-            // 
-            this.详细数据ToolStripMenuItem.Name = "详细数据ToolStripMenuItem";
-            this.详细数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.详细数据ToolStripMenuItem.Text = "详细数据";
-            this.详细数据ToolStripMenuItem.Click += new System.EventHandler(this.详细数据ToolStripMenuItem_Click);
-            // 
-            // 日志ToolStripMenuItem
-            // 
-            this.日志ToolStripMenuItem.Name = "日志ToolStripMenuItem";
-            this.日志ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.日志ToolStripMenuItem.Text = "日 志";
-            this.日志ToolStripMenuItem.Click += new System.EventHandler(this.日志ToolStripMenuItem_Click);
-            // 
-            // 导出ExcelToolStripMenuItem
-            // 
-            this.导出ExcelToolStripMenuItem.Name = "导出ExcelToolStripMenuItem";
-            this.导出ExcelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.导出ExcelToolStripMenuItem.Text = "导出Excel";
-            this.导出ExcelToolStripMenuItem.Click += new System.EventHandler(this.导出ExcelToolStripMenuItem_Click);
-            // 
             // colsID
             // 
             this.colsID.DataPropertyName = "ID";
@@ -161,10 +131,41 @@
             this.colsLastDate.ReadOnly = true;
             this.colsLastDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.详细数据ToolStripMenuItem,
+            this.日志ToolStripMenuItem,
+            this.导出ExcelToolStripMenuItem,
+            this.删除ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(130, 92);
+            // 
+            // 详细数据ToolStripMenuItem
+            // 
+            this.详细数据ToolStripMenuItem.Name = "详细数据ToolStripMenuItem";
+            this.详细数据ToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.详细数据ToolStripMenuItem.Text = "详细数据";
+            this.详细数据ToolStripMenuItem.Click += new System.EventHandler(this.详细数据ToolStripMenuItem_Click);
+            // 
+            // 日志ToolStripMenuItem
+            // 
+            this.日志ToolStripMenuItem.Name = "日志ToolStripMenuItem";
+            this.日志ToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.日志ToolStripMenuItem.Text = "日 志";
+            this.日志ToolStripMenuItem.Click += new System.EventHandler(this.日志ToolStripMenuItem_Click);
+            // 
+            // 导出ExcelToolStripMenuItem
+            // 
+            this.导出ExcelToolStripMenuItem.Name = "导出ExcelToolStripMenuItem";
+            this.导出ExcelToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.导出ExcelToolStripMenuItem.Text = "导出Excel";
+            this.导出ExcelToolStripMenuItem.Click += new System.EventHandler(this.导出ExcelToolStripMenuItem_Click);
+            // 
             // 删除ToolStripMenuItem
             // 
             this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.删除ToolStripMenuItem.Text = "删除";
             this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
             // 
@@ -208,6 +209,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colsAddDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colsLastDate;
         private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
+        private System.Windows.Forms.FolderBrowserDialog saveFileDialog1;
     }
 }
 
