@@ -215,6 +215,7 @@
             this.Name = "UpdateProjectItem";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "修改";
             this.Load += new System.EventHandler(this.UpdateProjectItem_Load);
             this.ResumeLayout(false);

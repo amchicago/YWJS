@@ -101,19 +101,14 @@ namespace JSCenter.DAL
             DrugProjectItem product = Db.Sql(@"select * from DrugProjectItem where ID = @0").Parameters(model.ID)
             .QuerySingle<DrugProjectItem>();
             
-           // product.CodeNum1 = model.CodeNum1;
-          //  product.CodeNum2 = model.CodeNum2;
-           // product.DrugProjectID = model.DrugProjectID;
             product.DZFMJ = model.DZFMJ;
             product.DZLD = model.DZLD;
             product.FC = model.FC;
             product.GSCYL = model.GSCYL;
             product.HL = model.HL;
-           // product.IsFuCe = model.IsFuCe;
             product.PJHL = model.PJHL;
             product.PJSFMJ = model.PJSFMJ;
             product.XSBS = model.XSBS;
-            //product.type = model.type;
 
             //记录日志
             LogProjectItem(product, model);
@@ -125,7 +120,6 @@ namespace JSCenter.DAL
                .Column("FC", product.FC)
                .Column("GSCYL", product.GSCYL)
                .Column("HL", product.HL)
-               //.Column("IsFuCe", product.IsFuCe)
                .Column("PJHL", product.PJHL)
                .Column("PJSFMJ", product.PJSFMJ)
                .Column("XSBS", product.XSBS)
@@ -173,6 +167,16 @@ namespace JSCenter.DAL
                     item.ZYLv
                      ).Execute();
             }
+        }
+        /// <summary>
+        /// 获取统计信息
+        /// </summary>
+        /// <param name="projectID"></param>
+        /// <returns></returns>
+        public static List<Tongji> GetTongjiList(string projectID)
+        {
+            var list = Db.Sql(@"select * from Tongji where ProjectID=@0").Parameters(projectID).QueryMany<Tongji>();
+            return list;
         }
 
     }

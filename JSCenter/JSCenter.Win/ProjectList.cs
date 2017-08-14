@@ -54,7 +54,8 @@ namespace JSCenter.Win
 
         private void 查看统计数据ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            TongJiList frm = new TongJiList(_ProjectID);
+            frm.ShowDialog();
         }
 
 
