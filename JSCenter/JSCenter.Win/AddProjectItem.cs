@@ -62,7 +62,7 @@ namespace JSCenter.Win
             model.DZFMJ = textBox6.Text.Trim();
             model.IsFuCe = checkBox1.Checked.ToString();
             model.DrugProjectID = Convert.ToInt32( _ProjectID);
-            model.type = comboBox1.SelectedItem.ToString();
+            model.type = comboBox1.SelectedItem.ToString().Trim();
             //TODO:获取之前的数据计算
             if (ValidateModel(model))
             {

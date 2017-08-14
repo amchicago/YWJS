@@ -78,17 +78,21 @@ namespace JSCenter.Win
                       FloatingPoint value = Evaluate.Evaluate(dic, Infix.ParseOrUndefined(config.HanLiang));
                       s.HL = Math.Round(value.RealValue, config.HanLiangPoint, MidpointRounding.AwayFromZero).ToString();
                   }
-                  catch (Exception)
+                  catch (Exception ex)
                   {
-
+                      Console.WriteLine(ex.ToString());
                   }
               };
             #endregion
 
             #region 计算平均含量和方差
 
-            var yplist = list.Where(s => s.type == Model.DrugType.饮片.ToString());
-            var tjlist = list.Where(s => s.type == Model.DrugType.汤剂.ToString());
+            list.ForEach(s=>countHL(s));
+
+            var yplist = list.Where(s => s.type.Trim() == Model.DrugType.饮片.ToString());
+            var tjlist = list.Where(s => s.type.Trim() == Model.DrugType.汤剂.ToString());
+            int ss = yplist.Count();
+            ss = tjlist.Count();
 
             Action<string ,double,bool> addTongji = (string key, double PJHL,bool isYp) =>
               {
@@ -165,10 +169,19 @@ namespace JSCenter.Win
 
             #endregion
 
-            //统计数据
+            #region 统计数据
+            foreach( var item in tongjiList)
+            {
+                item.ZYLv = Math.Round((item.TJHL / item.YPHL) * 100, 2, MidpointRounding.AwayFromZero); 
+            }
+            #endregion
 
             #region  计算完毕更新数据库
-
+           
+            foreach( var item in list)
+            {
+                Console.WriteLine(item.FC);
+            }
             #endregion
 
         }
