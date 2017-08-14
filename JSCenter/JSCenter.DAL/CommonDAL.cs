@@ -67,7 +67,7 @@ namespace JSCenter.DAL
         public static void AddProjectItem(DrugProjectItem model)
         {
           model.ID = CurrentID("DrugProjectItem");
-          int row=  Db.Sql(@"insert into DrugProjectItem values(@0,@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12);")
+          int row=  Db.Sql(@"insert into DrugProjectItem values(@0,@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13);")
                .Parameters(
                model.ID,
                model.DrugProjectID,
@@ -81,7 +81,8 @@ namespace JSCenter.DAL
                model.HL,
                model.PJHL,
                model.FC,
-               model.IsFuCe
+               model.IsFuCe,
+               model.type
                ).Execute();
         }
 
@@ -106,6 +107,7 @@ namespace JSCenter.DAL
             product.PJHL = model.PJHL;
             product.PJSFMJ = model.PJSFMJ;
             product.XSBS = model.XSBS;
+            product.type = model.type;
 
             //记录日志
             LogProjectItem(product, model);

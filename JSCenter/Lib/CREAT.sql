@@ -25,7 +25,8 @@ CREATE TABLE  DrugProjectItem(
    HL        VARCHAR(100)  ,
    PJHL      VARCHAR(100)  ,
    FC        VARCHAR(100)  ,
-   IsFuCe    VARCHAR(10)  NOT NULL
+   IsFuCe    VARCHAR(10)  NOT NULL,
+   Type      VARCHAR(10)  NOT NULL
 );
 
 

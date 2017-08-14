@@ -33,7 +33,11 @@ namespace JSCenter.Win
 
         private void AddProjectItem_Load(object sender, EventArgs e)
         {
-
+            comboBox1.DataSource = System.Enum.GetNames(typeof(Model.DrugType));
+            Model.DrugType yp = Model.DrugType.饮片;
+            comboBox1.SelectedIndex = this.comboBox1.FindString(yp.ToString());
+            // 取值
+            //Model.DrugType testenum = (Model.DrugType)Enum.Parse(typeof(Model.DrugType), comboBox1.SelectedItem.ToString(), false);
         }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
@@ -58,6 +62,7 @@ namespace JSCenter.Win
             model.DZFMJ = textBox6.Text.Trim();
             model.IsFuCe = checkBox1.Checked.ToString();
             model.DrugProjectID = Convert.ToInt32( _ProjectID);
+            model.type = comboBox1.SelectedItem.ToString();
             //TODO:获取之前的数据计算
             if (ValidateModel(model))
             {

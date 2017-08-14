@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="DrugProject.cs" />
     <Compile Include="DrugProjectItem.cs" />
+    <Compile Include="DrugType.cs" />
     <Compile Include="ProjectLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SysConfig.cs" />

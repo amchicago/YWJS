@@ -88,6 +88,10 @@ namespace JSCenter.Model
                 return IsFuCe == "True" ? "是" : "否";
             }
         }
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public string type { get; set;}
 
     }
 }

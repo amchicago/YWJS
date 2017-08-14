@@ -52,6 +52,9 @@ namespace JSCenter.Win
         public static  void ReCalculation(string projectId)
         {
             var list = DAL.CommonDAL.GetProjectItemList(projectId);
+            var fucelist = list.Where(s => s.IsFuCe == "True").ToList();
+            var normallist = list.Where(s => s.IsFuCe == "False").ToList();
+
             #region 加载配置
             Model.SysConfig config = ReadConfig();
             if (config == null || string.IsNullOrEmpty(config.HanLiang))
@@ -81,21 +84,42 @@ namespace JSCenter.Win
 
                 }
             };
-            list.ForEach(s => countHL(s));
+            normallist.ForEach(s => countHL(s));
+            fucelist.ForEach(s => countHL(s));
             #endregion
-           
+
             #region 计算平均含量和方差
-            foreach ( var item in list.GroupBy(s=>s.CodeNum1))
+            
+            foreach ( var item in normallist.GroupBy(s=>s.CodeNum1))
             {
                 double PJHL = 0;
-              
+                int lastId = 0;
+                double fangche = 0;
+                double lastHL = 0;
                 foreach(var sitem in item)
+                {
+                    PJHL += Convert.ToDouble(sitem.HL);
+                    lastId = sitem.ID;
+                }
+                if (lastId != 0&&item.Count()>0)
+                {
+                    PJHL = Math.Round(PJHL / item.Count(),config.PingJunHLPoint,MidpointRounding.AwayFromZero);
+                    normallist.Where(s => s.ID == lastId).FirstOrDefault().PJHL = PJHL.ToString();
+                }
+            }
+            
+            foreach (var item in fucelist.GroupBy(s => s.CodeNum1))
+            {
+                double PJHL = 0;
+                foreach (var sitem in item)
                 {
                     PJHL += Convert.ToDouble(sitem.HL);
                 }
             }
             #endregion
-            
+
+            //统计数据
+
             #region  计算完毕更新数据库
 
             #endregion
