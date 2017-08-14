@@ -2,7 +2,7 @@
 Drop table DrugProject;
 Drop table ProjectLog;
 Drop table DrugProjectItem;
-
+Drop table Tongji;
 
 CREATE TABLE DrugProject(
    ID         INT PRIMARY KEY    NOT NULL,
@@ -38,4 +38,14 @@ CREATE TABLE  ProjectLog(
    BeforeValue     VARCHAR(100)  NOT NULL,
    AfterValue      VARCHAR(100)  NOT NULL,
    ChangeDate      VARCHAR(100)  NOT NULL
+);
+
+
+CREATE TABLE  Tongji(
+   ID              INT PRIMARY KEY  NOT NULL,
+   ProjectID       INT   NOT NULL,
+   GroupName       VARCHAR(100)  NOT NULL,
+   TJHL            VARCHAR(100)  NOT NULL,
+   YPHL            VARCHAR(100)  NOT NULL,
+   ZYLv            VARCHAR(100)  NOT NULL
 );

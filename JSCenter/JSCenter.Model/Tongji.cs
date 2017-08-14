@@ -11,6 +11,10 @@ namespace JSCenter.Model
     /// </summary>
     public class Tongji
     {
+        public int ID { get; set; }
+
+        public int ProjectID { get; set; }
+
         public string GroupName { get; set; }
 
         /// <summary>

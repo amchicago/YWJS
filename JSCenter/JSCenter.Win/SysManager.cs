@@ -91,9 +91,7 @@ namespace JSCenter.Win
 
             var yplist = list.Where(s => s.type.Trim() == Model.DrugType.饮片.ToString());
             var tjlist = list.Where(s => s.type.Trim() == Model.DrugType.汤剂.ToString());
-            int ss = yplist.Count();
-            ss = tjlist.Count();
-
+           
             Action<string ,double,bool> addTongji = (string key, double PJHL,bool isYp) =>
               {
                   if (isYp)
