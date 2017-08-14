@@ -40,6 +40,12 @@ namespace JSCenter.DAL
         public static void DeleteProject(string ID)
         {
             Db.Sql(@"delete from DrugProject where ID = @0").Parameters(ID).Execute();
+            Db.Sql(@"delete from DrugProjectItem where DrugProjectID = @0").Parameters(ID).Execute();
+        }
+
+        public static void DeleteProjectItem(string ID)
+        {
+            Db.Sql(@"delete from DrugProjectItem where ID = @0").Parameters(ID).Execute();
         }
         /// <summary>
         /// 获取药材检验列表
@@ -103,7 +109,7 @@ namespace JSCenter.DAL
             product.FC = model.FC;
             product.GSCYL = model.GSCYL;
             product.HL = model.HL;
-            product.IsFuCe = model.IsFuCe;
+           // product.IsFuCe = model.IsFuCe;
             product.PJHL = model.PJHL;
             product.PJSFMJ = model.PJSFMJ;
             product.XSBS = model.XSBS;
@@ -119,7 +125,7 @@ namespace JSCenter.DAL
                .Column("FC", product.FC)
                .Column("GSCYL", product.GSCYL)
                .Column("HL", product.HL)
-               .Column("IsFuCe", product.IsFuCe)
+               //.Column("IsFuCe", product.IsFuCe)
                .Column("PJHL", product.PJHL)
                .Column("PJSFMJ", product.PJSFMJ)
                .Column("XSBS", product.XSBS)
@@ -131,6 +137,14 @@ namespace JSCenter.DAL
 
             }
             
+        }
+
+
+        public static DrugProjectItem GetDrugProjectItem(string ID)
+        {
+            DrugProjectItem product = Db.Sql(@"select * from DrugProjectItem where ID = @0").Parameters(ID)
+           .QuerySingle<DrugProjectItem>();
+            return product;
         }
 
         public static void LogProjectItem(Model.DrugProjectItem before, Model.DrugProjectItem after)

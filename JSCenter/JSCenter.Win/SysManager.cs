@@ -150,9 +150,9 @@ namespace JSCenter.Win
                                 fclist = fclist.OrderBy(s => s.ID).ToList();
                                 for (int i = 1; i < fclist.Count; i++)
                                 {
-                                    fac = fclist[i].HL - fclist[i - 1].HL;
+                                    fac = fclist[i-1].HL - fclist[i].HL;
                                 }
-                                list.Where(s => s.ID == lastId).FirstOrDefault().FC = fac.ToString();
+                                list.Where(s => s.ID == lastId).FirstOrDefault().FC = Math.Round(fac,config.FangChaPoint ,MidpointRounding.AwayFromZero).ToString();
                             }
                         }
                     }
