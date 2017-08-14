@@ -131,6 +131,8 @@ namespace JSCenter.Win
             }
             #endregion
 
+            rowIndex += 1;//分割1行
+
             #region 汤剂
 
             int tjMax = rowIndex + 2;
@@ -187,10 +189,12 @@ namespace JSCenter.Win
             }
             #endregion
 
+            rowIndex += 9;//分割5行
+
             #region 统计信息
 
 
-            rowIndex += 5;//分割5行
+
 
 
             Dictionary<int, string> tongjiziduan = new Dictionary<int, string>();
