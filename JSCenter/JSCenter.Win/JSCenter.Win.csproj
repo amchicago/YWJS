@@ -99,6 +99,12 @@
       <DependentUpon>ConfigCenter.cs</DependentUpon>
     </Compile>
     <Compile Include="ExcelManager.cs" />
+    <Compile Include="LogDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogDetails.Designer.cs">
+      <DependentUpon>LogDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConfigCenter.resx">
       <DependentUpon>ConfigCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogDetails.resx">
+      <DependentUpon>LogDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

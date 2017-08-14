@@ -26,4 +26,11 @@ namespace JSCenter.Model
 
         public string ChangeDate { get; set; }
     }
+
+    public enum ProjectLogType
+    {
+        删除=1,
+        修改=2,
+        添加=3
+    }
 }
