@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tongji.cs" />
     <Compile Include="DrugProject.cs" />
     <Compile Include="DrugProjectItem.cs" />
     <Compile Include="DrugType.cs" />
