@@ -20,9 +20,16 @@ namespace JSCenter.Win
         {
             var datalist = DAL.CommonDAL.GetProjectItemList(projectID);
             var projectModel = DAL.CommonDAL.GetProject(projectID);
-            string path = AppDomain.CurrentDomain.BaseDirectory + "center.xlsx";
+            string savePath = string.Format("{0}\\{1}_{2}.xlsx", exclePath, projectModel.DurgName, DateTime.Now.ToString("yyyyMMddHHmmss"));
+            string path = AppDomain.CurrentDomain.BaseDirectory + "_t.xlsx";
 
-            OXExcel doce = new OXExcel(path);
+            #region
+
+            byte[] docData = Common.FileHelper.FileToByte(path);
+            Common.FileHelper.ByteToFile(docData, savePath);
+
+            #endregion
+            OXExcel doce = new OXExcel(savePath);
             doce.LoadExcel();
 
             #region 初始化背景填充色
