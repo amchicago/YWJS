@@ -44,7 +44,7 @@ namespace JSCenter.Win
 
         private void SetTxtBox()
         {
-            txtCode1.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            txtCode1.Text = string.Format("{0}-{1}-{2}", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
         }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)

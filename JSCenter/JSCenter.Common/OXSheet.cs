@@ -123,6 +123,10 @@ namespace JSCenter.Common
             Cell cell = getCell(row, cloIndex);
             
             cell.StyleIndex = Convert.ToUInt32(fillId);
+            if (data == null)
+            {
+                return;
+            }
             cell.DataType = CellValues.SharedString;
             int index = getSharedStringItemIndex(data.ToString());
             cell.CellValue = new CellValue(index.ToString());

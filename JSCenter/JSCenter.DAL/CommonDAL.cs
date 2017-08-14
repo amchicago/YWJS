@@ -33,6 +33,13 @@ namespace JSCenter.DAL
                .Parameters(model.ID, model.DurgName, model.AddDate, model.LastDate)
                .Execute();
         }
+
+        public static DrugProject GetProject(string ID)
+        {
+            DrugProject product = Db.Sql(@"select * from DrugProject where ID = @0").Parameters(ID)
+         .QuerySingle<DrugProject>();
+            return product;
+        }
         /// <summary>
         /// 删除
         /// </summary>
