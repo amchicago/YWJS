@@ -21,13 +21,9 @@ namespace JSCenter.Win
         /// </summary>
         /// <param name="_ProjectID"></param>
         /// <param name="ID">ID</param>
-        public AddProjectItem(string _ProjectID,int? ID=null)
+        public AddProjectItem(string _ProjectID)
         {
             this._ProjectID = _ProjectID;
-            if (ID.HasValue)
-            {
-                //TODO:更新
-            }
             InitializeComponent();
         }
 
@@ -37,9 +33,6 @@ namespace JSCenter.Win
             Model.DrugType yp = Model.DrugType.饮片;
             comboBox1.SelectedIndex = this.comboBox1.FindString(yp.ToString());
             SetTxtBox();
-         
-            // 取值
-            //Model.DrugType testenum = (Model.DrugType)Enum.Parse(typeof(Model.DrugType), comboBox1.SelectedItem.ToString(), false);
         }
 
         private void SetTxtBox()
@@ -70,7 +63,6 @@ namespace JSCenter.Win
             model.IsFuCe = checkBox1.Checked.ToString();
             model.DrugProjectID = Convert.ToInt32( _ProjectID);
             model.type = comboBox1.SelectedItem.ToString().Trim();
-            //TODO:获取之前的数据计算
             if (ValidateModel(model))
             {
                 DAL.CommonDAL.AddProjectItem(model);

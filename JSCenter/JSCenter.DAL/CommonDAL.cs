@@ -1,4 +1,5 @@
 ﻿using JSCenter.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,12 +49,24 @@ namespace JSCenter.DAL
         {
             Db.Sql(@"delete from DrugProject where ID = @0").Parameters(ID).Execute();
             Db.Sql(@"delete from DrugProjectItem where DrugProjectID = @0").Parameters(ID).Execute();
+            Db.Sql(@"delete from ProjectLog where DrugProjectID = @0").Parameters(ID).Execute();
         }
 
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="ID"></param>
         public static void DeleteProjectItem(string ID)
         {
-            Db.Sql(@"delete from DrugProjectItem where ID = @0").Parameters(ID).Execute();
+            var model = GetProjectItem(Convert.ToInt32(ID));
+            if (model != null)
+            {
+                Db.Sql(@"delete from DrugProjectItem where ID = @0").Parameters(model.ID).Execute();
+                LogProjectItem(model.DrugProjectID, ProjectLogType.删除, model, null);
+            }
         }
+
+
         /// <summary>
         /// 获取药材检验列表
         /// </summary>
@@ -97,17 +110,30 @@ namespace JSCenter.DAL
                model.IsFuCe,
                model.type
                ).Execute();
+            //记录日志
+          model = GetProjectItem(model.ID);
+          LogProjectItem(model.ID, ProjectLogType.添加, null, model);
+        }
+
+        public static DrugProjectItem GetProjectItem(int ID)
+        {
+            DrugProjectItem product = Db.Sql(@"select * from DrugProjectItem where ID = @0").Parameters(ID)
+            .QuerySingle<DrugProjectItem>();
+            return product;
         }
 
         /// <summary>
         /// 更新
         /// </summary>
         /// <param name="model"></param>
-        public static void UpdateProjectItem(DrugProjectItem model)
+        public static void UpdateProjectItem(DrugProjectItem model,bool islog=false)
         {
-            DrugProjectItem product = Db.Sql(@"select * from DrugProjectItem where ID = @0").Parameters(model.ID)
-            .QuerySingle<DrugProjectItem>();
-            
+            DrugProjectItem product = GetProjectItem(model.ID);
+            //记录日志
+            if (islog)
+            {
+                LogProjectItem(product.DrugProjectID, ProjectLogType.修改, product, model);
+            }
             product.DZFMJ = model.DZFMJ;
             product.DZLD = model.DZLD;
             product.FC = model.FC;
@@ -117,8 +143,7 @@ namespace JSCenter.DAL
             product.PJSFMJ = model.PJSFMJ;
             product.XSBS = model.XSBS;
 
-            //记录日志
-            LogProjectItem(product, model);
+            
             try
             {
                 int rowsAffected = Db.Update("DrugProjectItem")
@@ -147,10 +172,63 @@ namespace JSCenter.DAL
            .QuerySingle<DrugProjectItem>();
             return product;
         }
-
-        public static void LogProjectItem(Model.DrugProjectItem before, Model.DrugProjectItem after)
+        /// <summary>
+        /// 写日志
+        /// </summary>
+        /// <param name="projectID">项目ID</param>
+        /// <param name="type"></param>
+        /// <param name="before"></param>
+        /// <param name="after"></param>
+        private static void LogProjectItem(int projectID,Model.ProjectLogType type,Model.DrugProjectItem before, Model.DrugProjectItem after)
         {
+            ProjectLog log = new ProjectLog();
+            log.ID=CurrentID("ProjectLog");
+            log.DrugProjectID = projectID;
+            if (before != null)
+            {
+                log.BeforeValue = JsonConvert.SerializeObject(before);
+            }
+            else
+            {
+                log.BeforeValue = string.Empty;
+            }
+            if (after != null)
+            {
+                log.AfterValue = JsonConvert.SerializeObject(after);
+            }
+            else
+            {
+                log.AfterValue = string.Empty;
+            }
+           
+            log.OpType = type.ToString();
+            log.ChangeDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            int row = Db.Sql(@"insert into ProjectLog values(@0,@1,@2,@3,@4,@5);").Parameters
+                   (
+                 log.ID,
+                 log.DrugProjectID,
+                 log.OpType,
+                 log.BeforeValue,
+                 log.AfterValue,
+                 log.ChangeDate
+                   ).Execute();
             //log
+        }
+
+
+        public static Model.ProjectLog GetLogItem(string ID)
+        {
+            ProjectLog product = Db.Sql(@"select * from ProjectLog where ID = @0").Parameters(ID)
+         .QuerySingle<ProjectLog>();
+            return product;
+        }
+
+        public static List<Model.ProjectLog> GetLogList(string ProjectID)
+        {
+            List<ProjectLog> product = Db.Sql(@"select * from ProjectLog where DrugProjectID = @0").Parameters(ProjectID)
+         .QueryMany<ProjectLog>();
+            return product;
         }
         /// <summary>
         /// 添加统计数据，每次先删除在插入

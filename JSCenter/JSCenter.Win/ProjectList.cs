@@ -63,7 +63,7 @@ namespace JSCenter.Win
         {
             SysManager.ReCalculation(_ProjectID);
 
-            var list= DAL.CommonDAL.GetProjectItemList(_ProjectID).OrderBy(s => s.IsFuCe).ToList();
+            var list= DAL.CommonDAL.GetProjectItemList(_ProjectID).OrderBy(s=>s.ID).ToList();
             this.dataGridView1.DataSource = list;
         }
 

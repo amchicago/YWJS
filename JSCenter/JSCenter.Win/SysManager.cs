@@ -54,6 +54,7 @@ namespace JSCenter.Win
             var list = DAL.CommonDAL.GetProjectItemList(projectId);
             
             var tongjiList = new List<Model.Tongji>();
+
             #region 加载配置
             Model.SysConfig config = ReadConfig();
             if (config == null || string.IsNullOrEmpty(config.HanLiang))

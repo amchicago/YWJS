@@ -10,15 +10,12 @@ namespace JSCenter.Model
     {
         public int ID { get; set; }
 
-
         public int  DrugProjectID   { get; set; }
 
-        public int DrugProjectItemID { get; set; }
-
         /// <summary>
-        /// 变更的字段
+        /// 操作类型
         /// </summary>
-        public string ZiDuan { get; set; }
+        public string OpType { get; set; }
 
         public string BeforeValue { get; set; }
 

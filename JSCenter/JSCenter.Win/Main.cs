@@ -55,7 +55,11 @@ namespace JSCenter.Win
         private void 日志ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dataGridView1.CurrentRow;
-            ProjectLog log = new ProjectLog();
+            if (row == null)
+            {
+                return;
+            }
+            ProjectLog log = new ProjectLog(row.Cells[0].Value.ToString());
             log.ShowDialog();
         }
 

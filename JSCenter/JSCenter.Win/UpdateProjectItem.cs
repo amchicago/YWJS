@@ -37,7 +37,7 @@ namespace JSCenter.Win
             model.XSBS = textBox4.Text.Trim();
             model.DZLD = textBox5.Text.Trim();
             model.DZFMJ = textBox6.Text.Trim();
-            DAL.CommonDAL.UpdateProjectItem(model);
+            DAL.CommonDAL.UpdateProjectItem(model,true);
             Common.MessageUtil.ShowTips("修改成功");
             this.DialogResult = DialogResult.OK;
             this.Close();

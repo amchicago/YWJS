@@ -63,7 +63,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(519, 42);
+            this.label2.Location = new System.Drawing.Point(462, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 20);
             this.label2.TabIndex = 1;
@@ -90,7 +90,7 @@
             // lbla1
             // 
             this.lbla1.AutoSize = true;
-            this.lbla1.Location = new System.Drawing.Point(521, 98);
+            this.lbla1.Location = new System.Drawing.Point(464, 98);
             this.lbla1.Name = "lbla1";
             this.lbla1.Size = new System.Drawing.Size(41, 12);
             this.lbla1.TabIndex = 4;
@@ -99,7 +99,7 @@
             // lbla2
             // 
             this.lbla2.AutoSize = true;
-            this.lbla2.Location = new System.Drawing.Point(521, 161);
+            this.lbla2.Location = new System.Drawing.Point(464, 161);
             this.lbla2.Name = "lbla2";
             this.lbla2.Size = new System.Drawing.Size(41, 12);
             this.lbla2.TabIndex = 7;
@@ -126,7 +126,7 @@
             // lbla3
             // 
             this.lbla3.AutoSize = true;
-            this.lbla3.Location = new System.Drawing.Point(521, 219);
+            this.lbla3.Location = new System.Drawing.Point(464, 219);
             this.lbla3.Name = "lbla3";
             this.lbla3.Size = new System.Drawing.Size(41, 12);
             this.lbla3.TabIndex = 10;
@@ -153,7 +153,7 @@
             // lbla4
             // 
             this.lbla4.AutoSize = true;
-            this.lbla4.Location = new System.Drawing.Point(521, 272);
+            this.lbla4.Location = new System.Drawing.Point(464, 272);
             this.lbla4.Name = "lbla4";
             this.lbla4.Size = new System.Drawing.Size(41, 12);
             this.lbla4.TabIndex = 13;
@@ -180,7 +180,7 @@
             // lbla5
             // 
             this.lbla5.AutoSize = true;
-            this.lbla5.Location = new System.Drawing.Point(521, 326);
+            this.lbla5.Location = new System.Drawing.Point(464, 326);
             this.lbla5.Name = "lbla5";
             this.lbla5.Size = new System.Drawing.Size(41, 12);
             this.lbla5.TabIndex = 16;
@@ -209,9 +209,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 12);
+            this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 17;
-            this.label4.Text = "当前操作：修改";
+            this.label4.Text = "当前操作：";
             // 
             // button1
             // 
@@ -227,7 +227,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 425);
+            this.ClientSize = new System.Drawing.Size(651, 425);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lbla5);
@@ -252,6 +252,7 @@
             this.Name = "LogDetails";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "日志详细";
             this.Load += new System.EventHandler(this.LogDetails_Load);
             this.ResumeLayout(false);

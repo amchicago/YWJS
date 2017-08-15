@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -45,10 +43,8 @@
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
             this.Column2,
-            this.Column3,
-            this.Column4,
+            this.Column1,
             this.Column5});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -57,36 +53,25 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(516, 374);
+            this.dataGridView1.Size = new System.Drawing.Size(344, 374);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "test1";
-            this.Column1.HeaderText = "编号";
-            this.Column1.Name = "Column1";
+            this.dataGridView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDoubleClick);
             // 
             // Column2
             // 
-            this.Column2.DataPropertyName = "test2";
-            this.Column2.HeaderText = "字段";
+            this.Column2.DataPropertyName = "ID";
+            this.Column2.HeaderText = "编号";
             this.Column2.Name = "Column2";
             // 
-            // Column3
+            // Column1
             // 
-            this.Column3.DataPropertyName = "test3";
-            this.Column3.HeaderText = "改动前";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "test4";
-            this.Column4.HeaderText = "改动后";
-            this.Column4.Name = "Column4";
+            this.Column1.DataPropertyName = "OpType";
+            this.Column1.HeaderText = "操作类型";
+            this.Column1.Name = "Column1";
             // 
             // Column5
             // 
-            this.Column5.DataPropertyName = "test5";
+            this.Column5.DataPropertyName = "ChangeDate";
             this.Column5.HeaderText = "日期";
             this.Column5.Name = "Column5";
             // 
@@ -94,7 +79,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 374);
+            this.ClientSize = new System.Drawing.Size(344, 374);
             this.Controls.Add(this.dataGridView1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -112,10 +97,8 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

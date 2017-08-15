@@ -33,10 +33,9 @@ CREATE TABLE  DrugProjectItem(
 CREATE TABLE  ProjectLog(
    ID              INT PRIMARY KEY  NOT NULL,
    DrugProjectID   INT   NOT NULL,
-   DrugProjectItemID  INT   NOT NULL,
-   ZiDuan          VARCHAR(100)  NOT NULL,
-   BeforeValue     VARCHAR(100)  NOT NULL,
-   AfterValue      VARCHAR(100)  NOT NULL,
+   OpType          VARCHAR(20)  NOT NULL,
+   BeforeValue     VARCHAR(1000)  NOT NULL,
+   AfterValue      VARCHAR(1000)  NOT NULL,
    ChangeDate      VARCHAR(100)  NOT NULL
 );
 
