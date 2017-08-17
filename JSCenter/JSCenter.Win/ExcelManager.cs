@@ -91,7 +91,7 @@ namespace JSCenter.Win
             Dictionary<int, string> ziduan = new Dictionary<int, string>();
 
             ziduan.Add(1, "编号");
-            ziduan.Add(2, "平均供试峰面积");
+            ziduan.Add(2, "供试峰面积");
             ziduan.Add(3, "供试称样量");
             ziduan.Add(4, "稀释倍数");
             ziduan.Add(5, "对照浓度mg/ml");

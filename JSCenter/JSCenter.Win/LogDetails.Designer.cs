@@ -72,11 +72,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 98);
+            this.label3.Location = new System.Drawing.Point(58, 98);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 12);
+            this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 2;
-            this.label3.Text = "平均供试峰面积";
+            this.label3.Text = "供试峰面积";
             // 
             // lblb1
             // 

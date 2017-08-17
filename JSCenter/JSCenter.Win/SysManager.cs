@@ -70,7 +70,7 @@ namespace JSCenter.Win
                   {
                       var dic = new Dictionary<string, FloatingPoint>()
                       {
-                         {"平均供试峰面积",float.Parse(s.PJSFMJ)},
+                         {"供试峰面积",float.Parse(s.PJSFMJ)},
                          {"供试称样量",float.Parse(s.GSCYL)},
                          {"稀释倍数",float.Parse(s.XSBS)},
                          {"对照浓度",float.Parse(s.DZLD)},

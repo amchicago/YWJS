@@ -115,7 +115,7 @@
             // 删除ToolStripMenuItem
             // 
             this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.删除ToolStripMenuItem.Text = "删除";
             this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
             // 
@@ -142,7 +142,7 @@
             // Column2
             // 
             this.Column2.DataPropertyName = "PJSFMJ";
-            this.Column2.HeaderText = "平均供试峰面积";
+            this.Column2.HeaderText = "供试峰面积";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 

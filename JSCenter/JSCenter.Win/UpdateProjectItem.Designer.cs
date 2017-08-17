@@ -130,11 +130,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 92);
+            this.label2.Location = new System.Drawing.Point(79, 92);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 12);
+            this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 40;
-            this.label2.Text = "平均供试峰面积";
+            this.label2.Text = "供试峰面积";
             // 
             // txtCode1
             // 
